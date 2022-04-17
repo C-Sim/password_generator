@@ -1,25 +1,49 @@
 // Global scope
 
-const lowercase = "abcdefghijklmnopqrstuvwxyz";
+const criteria = [
+  {
+    category: "lowercase",
+    string: "abcdefghijklmnopqrstuvwxyz",
+    text: "Would you like to include lowercase letters?",
+  },
+  {
+    category: "uppercase",
+    string: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    text: "Would you like to include uppercase letters?",
+  },
+  {
+    category: "0123456789",
+    string: "abcdefghijklmnopqrstuvwxyz",
+    text: "Would you like to include numbers?",
+  },
+  {
+    category: "special",
+    string: " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~",
+    text: "Would you like to include special characters?",
+  },
+];
 
-const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-const number = "0123456789";
-
-const special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-
-// Assignment Code
-const generateBtn = document.querySelector("#generate");
-
-// Prompt user for password length of 8-128 characters
+// Prompt user for password length of 8-128 characters and store in variable of userLength
 const userLength = prompt(
   "How many characters would you like your password to have? Please enter a number of minimum 8 and maximum 128."
 );
 
-const getPasswordLength = () => {
-  return 10;
-};
+// Convert userLength to integer
+const userLengthInt = parseInt(userLength);
 
+/* Validate input
+If valid, store integer as getPasswordLength
+If invalid, alert user
+*/
+if (userLengthInt >= 8 && userLengthInt <= 128) {
+  const getPasswordLength = userLengthInt;
+} else {
+  alert(
+    "Invalid input. Please use numeric digits to enter a number of minimum 8 and maximum 128."
+  );
+}
+
+// Get criteria for password and push to array
 const getPasswordCriteria = () => {
   return [lowercase, uppercase, number, special];
 };
@@ -27,11 +51,6 @@ const getPasswordCriteria = () => {
 const createPassword = () => {
   return "Cherelle8!";
 };
-
-// - lowercase "abcdefghijklmnopqrstuvwxyz"
-// - uppercase "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-// - numeric "0123456789"
-// - special characters " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
 
 // main function to generate the random password
 const generatePassword = () => {
