@@ -1,55 +1,69 @@
 // Global scope
 
-const criteria = [
-  {
-    category: "lowercase",
-    string: "abcdefghijklmnopqrstuvwxyz",
-    text: "Would you like to include lowercase letters?",
-  },
-  {
-    category: "uppercase",
-    string: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    text: "Would you like to include uppercase letters?",
-  },
-  {
-    category: "0123456789",
-    string: "abcdefghijklmnopqrstuvwxyz",
-    text: "Would you like to include numbers?",
-  },
-  {
-    category: "special",
-    string: " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~",
-    text: "Would you like to include special characters?",
-  },
-];
+// Declare criteria strings and split into array
+const lowercase = "abcdefghijklmnopqrstuvwxyz";
 
-// Prompt user for password length of 8-128 characters and store in variable of userLength
-const userLength = prompt(
-  "How many characters would you like your password to have? Please enter a number of minimum 8 and maximum 128."
-);
+const lowercaseArray = lowercase.split("abcdefghijklmnopqrstuvwxyz");
 
-// Convert userLength to integer
-const userLengthInt = parseInt(userLength);
+const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-/* Validate input
-If valid, store integer as getPasswordLength
-If invalid, alert user
-*/
-if (userLengthInt >= 8 && userLengthInt <= 128) {
-  const getPasswordLength = userLengthInt;
-} else {
-  alert(
-    "Invalid input. Please use numeric digits to enter a number of minimum 8 and maximum 128."
+const uppercaseArray = uppercase.split("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+
+const number = "0123456789";
+
+const numberArray = number.split("0123456789");
+
+const special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
+
+const specialArray = special.split(" !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~");
+
+// Generate Password button
+const generateBtn = document.querySelector("#generate");
+
+const getPasswordLength = () => {
+  // Prompt user for password length of 8-128 characters and store in variable of userLength
+  const userLength = prompt(
+    "How many characters would you like your password to have? Please enter a number of minimum 8 and maximum 128."
   );
-}
+  // Validate input as number 8-128
+  // If valid, confirm criteria
+  if (userLength >= 8 && userLength <= 128) {
+    // Convert userLength to integer and store as getPasswordLength
+    return parseInt(userLength);
+  } else {
+    // If invalid, alert user
+    alert(
+      "Invalid input. Please use numeric digits to enter a number of minimum 8 and maximum 128."
+    );
+  }
+};
 
 // Get criteria for password and push to array
 const getPasswordCriteria = () => {
-  return [lowercase, uppercase, number, special];
+  // Ask user to confirm criteria
+  const lowercaseRequired = confirm(
+    "Would you like to include lowercase letters?"
+  );
+
+  const uppercaseRequired = confirm(
+    "Would you like to include uppercase letters?"
+  );
+
+  const numberRequired = confirm("Would you like to include numbers?");
+
+  const specialRequired = confirm(
+    "Would you like to include special characters?"
+  );
 };
 
+// const getPasswordCriteria = (lowercase, uppercase, number, special) => {
+//   return [lowercaseArray, uppercase, number, special];
+// };
+
 const createPassword = () => {
-  return "Cherelle8!";
+  // if (lowercaseRequired == true) {
+  //   getPasswordCriteria.push(lowercaseArray);
+  // }
 };
 
 // main function to generate the random password
