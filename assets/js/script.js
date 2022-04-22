@@ -1,4 +1,6 @@
 // Global scope
+// Generate Password button
+const generateBtn = document.querySelector("#generate");
 
 // Declare criteria strings and split into array
 const lowercase = "abcdefghijklmnopqrstuvwxyz";
@@ -19,38 +21,27 @@ const specialArray = special.split("");
 
 const criteriaArray = [];
 
-// Generate Password button
-const generateBtn = document.querySelector("#generate");
-
-// const isValidInput = (userLength) => {
-//   if (userLength >= 8 && userLength <= 128) {
-//     // Convert userLength to integer and store as getPasswordLength
-//     return true;
-//   } else {
-//     // If invalid, alert user
-//     alert(
-//       "Invalid input. Please use numeric digits to enter a number of minimum 8 and maximum 128."
-//     );
-//   }
-// };
-
-// const isValidLength = isValidInput(userLength);
+const resultArray = [];
 
 const getPasswordLength = () => {
   // Prompt user for password length of 8-128 characters and store in variable of userLength
   const userLength = prompt(
     "How many characters would you like your password to have? Please enter a number of minimum 8 and maximum 128."
   );
+
+  const userLengthInt = parseInt(userLength);
+
   // Validate input as number 8-128
-  // If valid, confirm criteria
-  if (userLength >= 8 && userLength <= 128) {
+  if (userLengthInt >= 8 && userLengthInt <= 128) {
+    // If valid, confirm criteria
     // Convert userLength to integer and store as getPasswordLength
-    return parseInt(userLength);
+    return userLengthInt;
   } else {
     // If invalid, alert user
     alert(
       "Invalid input. Please use numeric digits to enter a number of minimum 8 and maximum 128."
     );
+    getPasswordLength();
   }
 };
 
@@ -87,31 +78,47 @@ const getPasswordCriteria = () => {
     console.log(criteriaArray);
   }
 
-  if (criteriaArray > 0) {
+  if (criteriaArray.length > 0) {
+    // create password
+    console.log(criteriaArray.length);
+    return criteriaArray;
   } else {
     alert(
       "Please select at least one criteria to include in your password generation."
     );
+    getPasswordCriteria();
   }
 };
 
-const createPassword = () => {
+const createPassword = (passwordLength, passwordCriteria) => {
   // get criteria
-  // from criteria get random character
-  // push to result array
+  for (let i = 0; i < passwordLength.length; i += 1) {
+    const getRandomCriteria =
+      passwordCriteria[Math.floor(math.random() * passwordCriteria.length)];
+    console.log(getRandomCriteria);
+    return getRandomCriteria;
+
+    // from criteria get random character
+    const getRandomCharacter = getRandomCriteria;
+    // push to result array
+  }
+
   // convert result array to string
 };
+
+// ---Starter code---do not change---
 
 // main function to generate the random password
 const generatePassword = () => {
   // get password length
   const passwordLength = getPasswordLength();
-
+  console.log(passwordLength);
   // get password criteria
   const passwordCriteria = getPasswordCriteria();
-
+  console.log(passwordCriteria);
   // create password
   const password = createPassword(passwordLength, passwordCriteria);
+  console.log(password);
 
   return password;
 };
