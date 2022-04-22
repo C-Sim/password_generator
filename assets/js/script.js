@@ -2,25 +2,27 @@
 // Generate Password button
 const generateBtn = document.querySelector("#generate");
 
-// Declare criteria strings and split into array
+// Declare criteria strings
 const lowercase = "abcdefghijklmnopqrstuvwxyz";
 
-const lowercaseArray = lowercase.split("");
+// const lowercaseArray = lowercase.split("");
 
 const uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-const uppercaseArray = uppercase.split("");
+// const uppercaseArray = uppercase.split("");
 
 const number = "0123456789";
 
-const numberArray = number.split("");
+// const numberArray = number.split("");
 
 const special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 
-const specialArray = special.split("");
+// const specialArray = special.split("");
 
+// Array to hold selected criteria
 const criteriaArray = [];
 
+// Array to hold createPassword output
 const resultArray = [];
 
 const getPasswordLength = () => {
@@ -52,7 +54,7 @@ const getPasswordCriteria = () => {
     "Would you like to include lowercase letters?"
   );
   if (lowercaseRequired == true) {
-    criteriaArray.push(lowercaseArray);
+    criteriaArray.push(lowercase);
     console.log(criteriaArray);
   }
 
@@ -60,13 +62,13 @@ const getPasswordCriteria = () => {
     "Would you like to include uppercase letters?"
   );
   if (uppercaseRequired == true) {
-    criteriaArray.push(uppercaseArray);
+    criteriaArray.push(uppercase);
     console.log(criteriaArray);
   }
 
   const numberRequired = confirm("Would you like to include numbers?");
   if (numberRequired == true) {
-    criteriaArray.push(numberArray);
+    criteriaArray.push(number);
     console.log(criteriaArray);
   }
 
@@ -74,7 +76,7 @@ const getPasswordCriteria = () => {
     "Would you like to include special characters?"
   );
   if (specialRequired == true) {
-    criteriaArray.push(specialArray);
+    criteriaArray.push(special);
     console.log(criteriaArray);
   }
 
@@ -90,20 +92,58 @@ const getPasswordCriteria = () => {
   }
 };
 
+// ISSUE WITHIN THIS BLOCK>>>
+
 const createPassword = (passwordLength, passwordCriteria) => {
   // get criteria
+  // loop over criteria array
   for (let i = 0; i < passwordLength.length; i += 1) {
-    const getRandomCriteria =
-      passwordCriteria[Math.floor(math.random() * passwordCriteria.length)];
-    console.log(getRandomCriteria);
-    return getRandomCriteria;
+    const eachRandomCharacter = getEachRandomCharacter();
 
-    // from criteria get random character
-    const getRandomCharacter = getRandomCriteria;
+    const randomCriteria = getRandomCriteria();
+    console.log(randomCriteria);
+
+    const randomCharacter = getRandomCharacter();
+    console.log(randomCharacter);
+
+    // for each criteria specified
+    if (i < criteriaArray.length) {
+      // get at least one character of each criteria
+      // from criteria get random character from each criteria
+      const getEachRandomCharacter = (passwordCriteria) => {
+        passwordCriteria[i][
+          Math.floor(Math.random() * passwordCriteria[i].length)
+        ];
+
+        return eachRandomCharacter;
+      };
+    } else {
+      // get random criteria from user selection
+      const getRandomCriteria = () => {
+        passwordCriteria[Math.floor(Math.random() * passwordCriteria.length)];
+
+        return randomCriteria;
+      };
+
+      // from criteria get random character
+      const getRandomCharacter = () => {
+        passwordCriteria[randomCriteria][
+          Math.floor(Math.random() * criteriaArray[passwordCriteria].length)
+        ];
+
+        return randomCharacter;
+      };
+    }
+
     // push to result array
+    resultArray.push(eachRandomCharacter);
+    resultArray.push(randomCharacter);
   }
+  // <<<ISSUE WITHIN THIS BLOCK
 
   // convert result array to string
+  console.log(resultArray);
+  return resultArray.join("");
 };
 
 // ---Starter code---do not change---
