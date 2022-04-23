@@ -1,6 +1,6 @@
 # password_generator
 
-Application that enables generation of random passwords based on predefined criteria. Dynamically updated HTML and CSS powered by JavaScript code with a responsive user interface that adapts to multiple screen sizes.
+Application that enables generation of random passwords based on user-defined criteria. Dynamically updated HTML and CSS powered by JavaScript code with a responsive user interface that adapts to multiple screen sizes.
 
 [Deployed GitHub URL](...)
 
