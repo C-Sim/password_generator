@@ -11,11 +11,11 @@ Application that enables generation of random passwords based on predefined crit
 - JavaScript
   - Loops
   - Arrays
-  - ...
+  - Conditional statements
 
 ## Screenshot
 
-![password_generator](...)
+![password_generator](assets/screenshots/password_generator.png)
 
 ## User Story
 

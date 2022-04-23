@@ -3,7 +3,7 @@
 // Generate Password button
 const generateBtn = document.querySelector("#generate");
 
-// Declare criteria strings
+// Declare criteria strings and transform to array
 const lowercase = "abcdefghijklmnopqrstuvwxyz";
 
 const lowercaseArray = lowercase.split("");
