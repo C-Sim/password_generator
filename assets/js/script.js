@@ -53,7 +53,6 @@ const getPasswordCriteria = () => {
   );
   if (lowercaseRequired == true) {
     criteriaArray.push.apply(criteriaArray, lowercaseArray);
-    console.log(criteriaArray);
   }
 
   const uppercaseRequired = confirm(
@@ -61,13 +60,11 @@ const getPasswordCriteria = () => {
   );
   if (uppercaseRequired == true) {
     criteriaArray.push.apply(criteriaArray, uppercaseArray);
-    console.log(criteriaArray);
   }
 
   const numberRequired = confirm("Would you like to include numbers?");
   if (numberRequired == true) {
     criteriaArray.push.apply(criteriaArray, numberArray);
-    console.log(criteriaArray);
   }
 
   const specialRequired = confirm(
@@ -75,12 +72,11 @@ const getPasswordCriteria = () => {
   );
   if (specialRequired == true) {
     criteriaArray.push.apply(criteriaArray, specialArray);
-    console.log(criteriaArray);
   }
 
   if (criteriaArray.length > 0) {
     // create password
-    console.log(criteriaArray.length);
+
     return criteriaArray;
   } else {
     alert(
@@ -96,7 +92,7 @@ const createPassword = (passwordLength, passwordCriteria) => {
   const resultArray = [];
 
   // get criteria
-  console.log(passwordLength);
+
   // loop over criteria array
   for (let i = 0; i < passwordLength; i += 1) {
     const randomCharacter =
@@ -107,7 +103,7 @@ const createPassword = (passwordLength, passwordCriteria) => {
   }
 
   // convert result array to string
-  console.log(resultArray);
+
   return resultArray.join("");
 };
 
@@ -117,13 +113,12 @@ const createPassword = (passwordLength, passwordCriteria) => {
 const generatePassword = () => {
   // get password length
   const passwordLength = getPasswordLength();
-  console.log(passwordLength);
+
   // get password criteria
   const passwordCriteria = getPasswordCriteria();
-  console.log(passwordCriteria);
+
   // create password
   const password = createPassword(passwordLength, passwordCriteria);
-  console.log(password);
 
   return password;
 };
@@ -131,7 +126,7 @@ const generatePassword = () => {
 // Write password to the #password input
 const writePassword = () => {
   const password = generatePassword();
-  console.log(password);
+
   const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
