@@ -20,19 +20,13 @@ const special = " !\"#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 
 const specialArray = special.split("");
 
-// Array to hold selected criteria
-const criteriaArray = [];
-
-// Array to hold createPassword output
-const resultArray = [];
-
 const getPasswordLength = () => {
   // Prompt user for password length of 8-128 characters and store in variable of userLength
   const userLength = prompt(
     "How many characters would you like your password to have? Please enter a number of minimum 8 and maximum 128."
   );
 
-  const userLengthInt = parseInt(userLength);
+  const userLengthInt = parseInt(userLength, 10);
 
   // Validate input as number 8-128
   if (userLengthInt >= 8 && userLengthInt <= 128) {
@@ -44,12 +38,15 @@ const getPasswordLength = () => {
     alert(
       "Invalid input. Please use numeric digits to enter a number of minimum 8 and maximum 128."
     );
-    getPasswordLength();
+    return getPasswordLength();
   }
 };
 
 // Get criteria for password and push to array
 const getPasswordCriteria = () => {
+  // Array to hold selected criteria
+  const criteriaArray = [];
+
   // Ask user to confirm criteria
   const lowercaseRequired = confirm(
     "Would you like to include lowercase letters?"
@@ -89,12 +86,15 @@ const getPasswordCriteria = () => {
     alert(
       "Please select at least one criteria to include in your password generation."
     );
-    getPasswordCriteria();
+    return getPasswordCriteria();
   }
 };
 
 // ISSUE WITHIN THIS BLOCK>>>
 const createPassword = (passwordLength, passwordCriteria) => {
+  // Array to hold createPassword output
+  const resultArray = [];
+
   // get criteria
   console.log(passwordLength);
   // loop over criteria array
@@ -131,6 +131,7 @@ const generatePassword = () => {
 // Write password to the #password input
 const writePassword = () => {
   const password = generatePassword();
+  console.log(password);
   const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
