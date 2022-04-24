@@ -51,26 +51,26 @@ const getPasswordCriteria = () => {
   const lowercaseRequired = confirm(
     "Would you like to include lowercase letters?"
   );
-  if (lowercaseRequired == true) {
+  if (lowercaseRequired) {
     criteriaArray.push.apply(criteriaArray, lowercaseArray);
   }
 
   const uppercaseRequired = confirm(
     "Would you like to include uppercase letters?"
   );
-  if (uppercaseRequired == true) {
+  if (uppercaseRequired) {
     criteriaArray.push.apply(criteriaArray, uppercaseArray);
   }
 
   const numberRequired = confirm("Would you like to include numbers?");
-  if (numberRequired == true) {
+  if (numberRequired) {
     criteriaArray.push.apply(criteriaArray, numberArray);
   }
 
   const specialRequired = confirm(
     "Would you like to include special characters?"
   );
-  if (specialRequired == true) {
+  if (specialRequired) {
     criteriaArray.push.apply(criteriaArray, specialArray);
   }
 
